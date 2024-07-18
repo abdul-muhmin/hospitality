@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Login</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Doctor Login</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button><br>
+            {% if error %}
+                <p>{{ error }}</p>
+            {% endif %}
+            <p>Didn't register yet?</p>
+            <a href="{% url 'patient:register_doctor' %}" class="btn btn-info">Register here</a><br>
+            <p>Go To FirstPage?<a href="{% url 'patient:firstpage' %}" class="btn btn-info">Click Here</a>
+            </p>    
+        </form>
+    </div>
+</body>
+</html>
